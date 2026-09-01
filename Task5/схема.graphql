@@ -1,0 +1,37 @@
+scalar Date
+
+type Client {
+  id: ID!
+  name: String!
+  age: Int
+  documents: [Document!]!
+  relatives: [Relative!]!
+}
+
+type Document {
+  id: ID!
+  type: DocumentType!
+  number: String!
+  issueDate: Date
+  expiryDate: Date
+}
+
+type Relative {
+  id: ID!
+  relationType: String!
+  name: String!
+  age: Int
+}
+
+enum DocumentType {
+  PASSPORT
+  DRIVER_LICENSE
+  SNILS
+  INN
+  BIRTH_CERTIFICATE
+}
+
+type Query {
+  client(id: ID!): Client
+  clients(ids: [ID!]!): [Client!]!
+}
